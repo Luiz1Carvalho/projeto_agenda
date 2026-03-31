@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Contact
+from .models import Category, Contact, Asd
 """LUIZ - 123"""
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
@@ -17,3 +17,7 @@ class ContactAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
     ordering = ('-id',)
+
+@admin.register(Asd)
+class AsdAdmin(admin.ModelAdmin):
+    list_display = ('only_name',)
