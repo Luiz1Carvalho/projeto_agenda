@@ -49,3 +49,4 @@ def search(request):
     }
 
     return render(request, 'contact/index.html', context)
+
