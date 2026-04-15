@@ -1,7 +1,7 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-    <div class=form-wrapper>
+    <div class="form-wrapper">
         <h2>Contato</h2>
         <form 
             action="{% url "contact:create" %}"
@@ -15,20 +15,14 @@
                     <div class="form-group">
                         <label for="{{line.id_for_label}}">{{ line.label }}</label>
                         {{ line }}
+                        {{ line.errors }}
                     </div>
                 </div>
             {% endfor %}
 
-{% comment %}             <div class=form-content>
-                <div class=form-group>
-                    <label for="id_first_name">Cabeçalho</label>
-                    <input type="text" name="first_name" maxlength="255" id="first_name">
-                </div>
-            </div> {% endcomment %}
-
-            <div class=form-content>
-                <div class=form-group>
-                    <button class=btn type="submit">Salvar</button>
+            <div class="form-content">
+                <div class="form-group">
+                    <button class="btn" type="submit">Salvar</button>
                 </div>
             </div>
 

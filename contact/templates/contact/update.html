@@ -1,0 +1,38 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+    <div class="form-wrapper">
+        <h2>Editando Contato: {{ contact.name }}</h2>
+        
+        <form 
+            action="{% url 'contact:update' contact.id %}"
+            method="POST"
+            enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="form-content">
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="errors">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                        {% if field.name == 'picture' and contact.picture %}
+                            <div class="form-group">
+                                <img src="{{ contact.picture.url }}" alt="" width="150">
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <div class="form-group">
+                    <button class="btn" type="submit">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

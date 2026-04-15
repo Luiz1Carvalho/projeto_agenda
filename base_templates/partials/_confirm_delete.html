@@ -1,0 +1,15 @@
+<div id="confirmModal" class="modal">
+    <div class="modal-box">
+        <h3>Confirmar exclusão</h3>
+        <p>Tem certeza que deseja excluir este contato?</p>
+
+        <div class="modal-actions">
+            <form method="POST" action="{% url 'contact:delete' contact.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link">Sim</button>
+            </form>
+
+            <a href="#" class="btn btn-link btn-delete">Não</a>
+        </div>
+    </div>
+</div>

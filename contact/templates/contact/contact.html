@@ -10,6 +10,19 @@
         <p><b>Phone: </b>{{ contact.phone }}</p>
         <p><b>Email: </b>{{ contact.email }}</p>
         <p><b>Categoria: </b>{{ contact.category.name }}</p>
+        {% if contact.picture %}
+            <p> <b>Imagem: </b> <img 
+                src="{{ contact.picture.url }}" 
+                alt="{{ contact.first_name }}" 
+                width="200"></p>
+        {% endif %}
+        
+        <div class="contact-links">
+            <a class="btn btn-link" href="{% url "contact:update" contact.id %}">Editar</a>
+            <a class="btn btn-link btn-delete" href="#confirmModal">Excluir</a>
+        </div>
+    </div>
 
+    {% include 'partials/_confirm_delete.html' %}
 
 {% endblock content %}
