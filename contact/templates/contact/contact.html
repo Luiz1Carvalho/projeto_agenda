@@ -16,11 +16,12 @@
                 alt="{{ contact.first_name }}" 
                 width="200"></p>
         {% endif %}
-        
-        <div class="contact-links">
-            <a class="btn btn-link" href="{% url "contact:update" contact.id %}">Editar</a>
-            <a class="btn btn-link btn-delete" href="#confirmModal">Excluir</a>
-        </div>
+        {% if user == contact.owner %}
+            <div class="contact-links">
+                <a class="btn btn-link" href="{% url "contact:update" contact.id %}">Editar</a>
+                <a class="btn btn-link btn-delete" href="#confirmModal">Excluir</a>
+            </div>
+        {% endif %}
     </div>
 
     {% include 'partials/_confirm_delete.html' %}

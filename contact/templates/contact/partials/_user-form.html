@@ -1,0 +1,35 @@
+<form 
+    action="{{ form_action }}"
+    method="POST">
+
+    {% csrf_token %}
+
+    {% for line in form %}
+        <div class="form-content">
+            <div class="form-group">
+                <label for="{{line.id_for_label}}">{{ line.label }}</label>
+                {{ line }}
+                {{ line.errors }}
+                {% if line.help_text %}
+                    <p class="help-text">{{ line.help_text }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+    {% if form.non_field_errors %}
+    <div class="form-content">
+        <div class="form-group">
+        <div class="message error">
+            {{ form.non_field_errors }}
+        </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="form-content">
+        <div class="form-group">
+            <button class="btn" type="submit">Entrar</button>
+        </div>
+    </div>
+</form>
