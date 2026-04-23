@@ -47,9 +47,3 @@ def user_update(request):
     
     form.save()
     return redirect('contact:user_update')
-
-
-
-
-
-#tentar corrigir onde vc erra o login e nao aparece erro no formulario
