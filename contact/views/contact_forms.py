@@ -6,22 +6,18 @@ from contact.forms import ContactForm
 from contact.models import Contact
 
 @login_required(login_url='contact:login')
-def create (request):
-    form_action = reverse('contact:index')
+def create(request):
     if request.method == 'POST':
         form = ContactForm(request.POST, request.FILES)
-        context = {'form': form, 'form_action': form_action}
-
         if form.is_valid():
             contact = form.save(commit=False)
             contact.owner = request.user
             contact.save()
             return redirect('contact:create')
-        
-        return render(request, 'contact/create.html',context, )
+    else:
+        form = ContactForm()
 
-
-    context = {'form': ContactForm()}
+    context = {'form': form}
     return render(request, 'contact/create.html', context)
 
 @login_required(login_url='contact:login')
